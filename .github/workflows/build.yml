@@ -24,8 +24,8 @@ jobs:
       with:
         channel: 'stable'
 
-    - name: Re-create Missing Android Skeleton
-      run: flutter create . --platforms=android --org=com.swingplus.app
+   # - name: Re-create Missing Android Skeleton
+   #   run: flutter create . --platforms=android --org=com.swingplus.app
 
     - name: Get Dependencies
       run: flutter pub get

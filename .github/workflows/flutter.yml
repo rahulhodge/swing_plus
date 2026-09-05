@@ -1,3 +1,4 @@
+*/
 name: Flutter Build
 
 on:
@@ -29,3 +30,4 @@ jobs:
         with:
           name: release-apk
           path: build/app/outputs/flutter-apk/app-release.apk
+/*

@@ -43,4 +43,4 @@ jobs:
           else
             git commit -m "chore(ci): add android scaffolding via flutter create"
             git push
-          fi
+          

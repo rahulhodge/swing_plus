@@ -17,16 +17,21 @@ jobs:
           fetch-depth: 0
           persist-credentials: true
 
-      - name: Setup Flutter
+      - name: Setup Flutter (pinned)
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: 'stable'
+          flutter-version: '3.22.0'   # ✅ pin to a known stable release
+
+      - name: Verify Flutter
+        run: |
+          echo "Flutter installation check"
+          flutter --version
+          which flutter
 
       - name: Run flutter create
         run: |
-          echo "Running flutter create to generate missing platform folders (android)..."
-          flutter --version
-          flutter create . --org com.example --project-name swing_plus --platforms android
+          echo "Generating missing android/ folder..."
+          flutter create . --org com.swingplus.app --project-name swing_plus --platforms android
 
       - name: Show git status
         run: git status --porcelain
@@ -37,10 +42,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add android || true
-          if git diff --staged --quiet; then
-            echo "No changes to commit"
-          else
-            git commit -m "chore(ci): add android scaffolding via flutter create"
-            git push
-          
+          git add android
+          git diff --staged --quiet || git commit -m "chore(ci): add android scaffolding via flutter create"
+          git push

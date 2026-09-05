@@ -209,15 +209,16 @@ class _DashboardScreenState extends State<DashboardScreen> {
               style: const TextStyle(fontWeight: FontWeight.bold),
             ),
             subtitle: Text("Qty: ${item['qty']} | Avg: ₹${item['buy']}"),
-          trailing: Text(
-            item['pnl']!,
-            style: TextStyle(
-              color: isPositive ? const Color(0xFF00E676) : Colors.redAccent,
-              fontWeight: FontWeight.bold,
+            trailing: Text(
+              item['pnl']!,
+              style: TextStyle(
+                color: isPositive ? const Color(0xFF00E676) : Colors.redAccent,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
-        ),
-      );
-    },
-  );
+        );
+      },
+    );
+  }
 }

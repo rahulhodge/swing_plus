@@ -13,24 +13,21 @@ jobs:
     - name: Checkout Code
       uses: actions/checkout@v4
 
-    - name: Set up Java JDK
+    - name: Set up Java
       uses: actions/setup-java@v3
       with:
         java-version: '17'
         distribution: 'temurin'
 
-    - name: Set up Flutter SDK
+    - name: Set up Flutter
       uses: subosito/flutter-action@v2
       with:
         channel: 'stable'
 
-    # Removed the "Re-create Missing Android Skeleton" step
-    # because it causes duplicate key errors in pubspec.yaml
-
     - name: Get Dependencies
       run: flutter pub get
 
-    - name: Build Flutter APK
+    - name: Build APK
       run: flutter build apk --release --no-tree-shake-icons
 
     - name: Upload APK File

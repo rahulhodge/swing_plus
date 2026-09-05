@@ -24,13 +24,13 @@ jobs:
       with:
         channel: 'stable'
 
-    - name: Re-create Missing Android Skeleton
-      run: flutter create . --platforms=android --org=com.swingplus.app
+    # Removed the "Re-create Missing Android Skeleton" step
+    # because it causes duplicate key errors in pubspec.yaml
 
     - name: Get Dependencies
       run: flutter pub get
 
-    - name: Build APK
+    - name: Build Flutter APK
       run: flutter build apk --release --no-tree-shake-icons
 
     - name: Upload APK File

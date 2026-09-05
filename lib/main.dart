@@ -195,12 +195,27 @@ class _DashboardScreenState extends State<DashboardScreen> {
   }
 
   Widget _buildPositionGrid(List<Map<String, String>> items, bool isLandscape) {
-    return ListView.builder(
-      itemCount: items.length,
-      itemBuilder: (context, index) {
-        final item = items[index];
-        final isPositive = item['pnl']!.startsWith('+');
-        return Card(
-          child: ListTile(
-            title: Text(item['name']!, style: const TextStyle(fontWeight: FontWeight.bold)),
-            subtitle: Text
+  return ListView.builder(
+    itemCount: items.length,
+    itemBuilder: (context, index) {
+      final item = items[index];
+      final isPositive = item['pnl']!.startsWith('+');
+      return Card(
+        child: ListTile(
+          title: Text(
+            item['name']!,
+            style: const TextStyle(fontWeight: FontWeight.bold),
+          ),
+          subtitle: Text("Qty: ${item['qty']} | Avg: ₹${item['buy']}"),
+          trailing: Text(
+            item['pnl']!,
+            style: TextStyle(
+              color: isPositive ? const Color(0xFF00E676) : Colors.redAccent,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+      );
+    },
+  );
+}

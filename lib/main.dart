@@ -185,28 +185,30 @@ class _DashboardScreenState extends State<DashboardScreen> {
     }
   }
 
-  // Existing Overview & Dividend Tabs (unchanged for brevity)
+  // Overview Tab placeholder
   Widget _buildOverviewTab(bool isLandscape) {
     return const Center(child: Text("Overview Dashboard Coming Soon"));
   }
 
+  // Dividend Tab placeholder
   Widget _buildDividendTab(bool isLandscape) {
     return const Center(child: Text("Dividend Ledger Coming Soon"));
   }
 
+  // ✅ Corrected Position Grid
   Widget _buildPositionGrid(List<Map<String, String>> items, bool isLandscape) {
-  return ListView.builder(
-    itemCount: items.length,
-    itemBuilder: (context, index) {
-      final item = items[index];
-      final isPositive = item['pnl']!.startsWith('+');
-      return Card(
-        child: ListTile(
-          title: Text(
-            item['name']!,
-            style: const TextStyle(fontWeight: FontWeight.bold),
-          ),
-          subtitle: Text("Qty: ${item['qty']} | Avg: ₹${item['buy']}"),
+    return ListView.builder(
+      itemCount: items.length,
+      itemBuilder: (context, index) {
+        final item = items[index];
+        final isPositive = item['pnl']!.startsWith('+');
+        return Card(
+          child: ListTile(
+            title: Text(
+              item['name']!,
+              style: const TextStyle(fontWeight: FontWeight.bold),
+            ),
+            subtitle: Text("Qty: ${item['qty']} | Avg: ₹${item['buy']}"),
           trailing: Text(
             item['pnl']!,
             style: TextStyle(
